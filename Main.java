@@ -53,7 +53,49 @@ public class Main {
     }
 
     public static void listarPedidosPorCliente(Scanner sc) {
-        // Aquí Persona 2 pide el ID del cliente y busca sus pedidos en pedidos.csv
+       System.out.print("Ingrese el ID del cliente: ");
+        int idCliente = sc.nextInt();
+
+        listarPedidosPorCliente(idCliente);
+    
+
+    
+        boolean encontrado = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(ARCHIVO_PEDIDOS))) {
+            String linea;
+
+            // Saltar encabezado
+            br.readLine();
+
+            System.out.println("\nPedidos del cliente ID " + idCliente + ":");
+
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+
+                int idPedido = Integer.parseInt(datos[0]);
+                int clientePedido = Integer.parseInt(datos[1]);
+                String producto = datos[2];
+                String precio = datos[3];
+                String cantidad = datos[4];
+                int activo = Integer.parseInt(datos[5]);
+
+                if (clientePedido == idCliente && activo == 1) {
+                    System.out.println("Pedido ID: " + idPedido +
+                            " | Producto: " + producto +
+                            " | Precio: " + precio +
+                            " | Cantidad: " + cantidad);
+                    encontrado = true;
+                }
+            }
+
+            if (!encontrado) {
+                System.out.println("No hay pedidos activos para este cliente.");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo pedidos.csv");
+        }
         System.out.println("Trabajando en: Listar Pedidos de un Cliente...");
     }
 
