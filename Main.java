@@ -9,7 +9,6 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
 
-
     static class Cliente {
         int id;
         String nombre;
@@ -245,6 +244,7 @@ public class Main {
     static int obtenerNuevoIdPedido(ArrayList<Pedido> pedidos) {
         return pedidos.stream().mapToInt(p -> p.id).max().orElse(0) + 1;
     }
+
 
     
 
