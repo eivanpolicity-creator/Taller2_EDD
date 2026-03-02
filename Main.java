@@ -64,8 +64,8 @@ public class Main {
                 ));
             }
         } catch (Exception e) {
-            e.printStackTrace();
-        }
+          System.err.println("Error al procesar los datos: " + e.getMessage());
+}
 
         return clientes;
     }
@@ -78,10 +78,10 @@ public class Main {
                 pw.println(c.id + "," + c.nombre + "," + c.apellido + "," + c.telefono + "," + c.activo);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-        }
+    System.err.println("Error al procesar los datos: " + e.getMessage());
     }
-
+    }
+    
     static void registrarCliente(ArrayList<Cliente> clientes) {
         System.out.print("Nombre: ");
         String nombre = sc.nextLine();
@@ -150,9 +150,9 @@ public class Main {
                         Integer.parseInt(p[5])
                 ));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+       } catch (Exception e) {
+    System.err.println("Error al procesar los datos: " + e.getMessage());
+}
 
         return pedidos;
     }
@@ -165,9 +165,9 @@ public class Main {
                 pw.println(p.id + "," + p.idCliente + "," + p.producto + "," +
                         p.precio + "," + p.cantidad + "," + p.activo);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+       } catch (Exception e) {
+    System.err.println("Error al procesar los datos: " + e.getMessage());
+}
     }
 
     static void registrarPedido(ArrayList<Cliente> clientes, ArrayList<Pedido> pedidos) {
